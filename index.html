@@ -43,19 +43,6 @@
     footer{max-width:640px;margin:0 auto;padding:40px 20px 60px;border-top:1px solid #eee;font-size:13px;color:#999;line-height:2.2}
     footer strong{color:#666}
 
-    /* Legal pages */
-    .pg{display:none;max-width:640px;margin:0 auto;padding:100px 20px 80px}
-    .pg.on{display:block}
-    .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#999;margin-bottom:32px;cursor:pointer;background:0;border:0;font-family:inherit;transition:color .2s}
-    .back:hover{color:#111}
-    .pg h1{font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
-    .pg .mt{font-size:13px;color:#bbb;margin-bottom:40px}
-    .pg h2{font-size:15px;font-weight:700;margin:36px 0 10px;padding-bottom:8px;border-bottom:1px solid #eee}
-    .pg p{font-size:15px;color:#666;margin-bottom:10px;line-height:1.8}
-    .pg ul{padding-left:20px;margin-bottom:10px}
-    .pg li{font-size:15px;color:#666;margin-bottom:6px;line-height:1.8}
-    .cb{background:#f9f9f9;border-radius:10px;padding:16px 20px;margin-top:12px;font-size:14px;color:#666;line-height:2}
-    .cb strong{color:#333}
   </style>
 </head>
 <body>
@@ -67,8 +54,6 @@
     <button class="lb" onclick="L('en')">English</button>
   </div>
 </div></nav>
-
-<div id="home">
 
 <div class="hero">
   <h1>HIT</h1>
@@ -82,7 +67,7 @@
       <h3>Heart Rush</h3>
       <p data-ko="60초 안에 같은 색 하트를 찾는 캐주얼 게임. 매일 새로운 도전과 보상이 기다립니다." data-en="Find matching hearts in 60 seconds. Daily challenges and rewards await.">60초 안에 같은 색 하트를 찾는 캐주얼 게임. 매일 새로운 도전과 보상이 기다립니다.</p>
       <div class="sc-tags">
-        <button class="sc-tag" onclick="go('hr')" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</button>
+        <a class="sc-tag" href="/heart-rush/privacy/" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</a>
       </div>
     </div>
   </div>
@@ -93,7 +78,7 @@
       <h3>Knock Knock</h3>
       <p data-ko="소중한 사람에게 매일 따뜻한 감사 메시지를 전하고, 건강 데이터도 함께 확인하세요." data-en="Send warm messages to loved ones daily and check health data together.">소중한 사람에게 매일 따뜻한 감사 메시지를 전하고, 건강 데이터도 함께 확인하세요.</p>
       <div class="sc-tags">
-        <button class="sc-tag" onclick="go('kk')" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</button>
+        <a class="sc-tag" href="/knock-knock/privacy/" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</a>
       </div>
     </div>
   </div>
@@ -108,110 +93,10 @@
   &copy; 2026 HIT. All rights reserved.
 </footer>
 
-</div>
-
-<!-- Heart Rush Privacy -->
-<div id="hr" class="pg"><div>
-  <button class="back" onclick="go('home')">← <span data-ko="돌아가기" data-en="Back">돌아가기</span></button>
-  <h1 data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</h1>
-  <div class="mt">Heart Rush · <span data-ko="시행일" data-en="Effective">시행일</span> 2026.04.14</div>
-  <p data-ko="에이치아이티(이하 '회사')는 「Heart Rush」(이하 '서비스') 이용자의 개인정보를 중요하게 여기며, 개인정보 보호법 및 관련 법령을 준수합니다. 본 방침은 서비스에서 어떤 정보를 수집·이용·보관하는지 안내합니다." data-en="HIT ('we', 'us', or 'our') values your privacy. This policy explains what information is collected and how it is used when you use Heart Rush ('the Service').">에이치아이티(이하 '회사')는 「Heart Rush」(이하 '서비스') 이용자의 개인정보를 중요하게 여기며, 개인정보 보호법 및 관련 법령을 준수합니다. 본 방침은 서비스에서 어떤 정보를 수집·이용·보관하는지 안내합니다.</p>
-
-  <h2 data-ko="1. 수집하는 개인정보 항목" data-en="1. Information We Collect">1. 수집하는 개인정보 항목</h2>
-  <p data-ko="서비스는 별도 회원가입 없이 이용 가능하며, 다음과 같은 정보가 수집·처리됩니다:" data-en="The Service can be used without registration. The following information is collected and processed:">서비스는 별도 회원가입 없이 이용 가능하며, 다음과 같은 정보가 수집·처리됩니다:</p>
-  <ul>
-    <li data-ko="기기 식별자 (익명 ID) — 계정 생성 및 데이터 연동. 실명이나 이메일은 수집하지 않습니다." data-en="Device identifier (anonymous ID) — account creation and data sync. No real name or email is collected.">기기 식별자 (익명 ID) — 계정 생성 및 데이터 연동. 실명이나 이메일은 수집하지 않습니다.</li>
-    <li data-ko="닉네임 — 랭킹, 확성기, 프로필 표시 (사용자가 직접 설정)" data-en="Nickname — ranking, megaphone, and profile display (set by user)">닉네임 — 랭킹, 확성기, 프로필 표시 (사용자가 직접 설정)</li>
-    <li data-ko="게임 데이터 — 점수, 레벨, 보유 재화/아이템, 출석 기록" data-en="Game data — scores, level, currency/items, check-in records">게임 데이터 — 점수, 레벨, 보유 재화/아이템, 출석 기록</li>
-    <li data-ko="확성기 메시지 — 사용자가 작성한 공개 메시지 및 신고 내역" data-en="Megaphone messages — public messages created by users and report records">확성기 메시지 — 사용자가 작성한 공개 메시지 및 신고 내역</li>
-    <li data-ko="IP 기반 국가 정보 — 확성기 지역 필터링 용도 (IP 자체는 저장하지 않음)" data-en="IP-based country info — megaphone regional filtering only (IP itself is not stored)">IP 기반 국가 정보 — 확성기 지역 필터링 용도 (IP 자체는 저장하지 않음)</li>
-  </ul>
-  <p data-ko="다음 데이터는 기기 로컬 저장소(localStorage)에만 저장되며, 서버로 전송되지 않습니다:" data-en="The following data is stored only on your device (localStorage) and is not transmitted to our servers:">다음 데이터는 기기 로컬 저장소(localStorage)에만 저장되며, 서버로 전송되지 않습니다:</p>
-  <ul>
-    <li data-ko="게임 설정 (BGM/효과음 음소거 여부)" data-en="Game settings (BGM/SFX mute state)">게임 설정 (BGM/효과음 음소거 여부)</li>
-    <li data-ko="일일 퀘스트 진행도, 출석 선물 수령 상태" data-en="Daily quest progress, check-in gift claim status">일일 퀘스트 진행도, 출석 선물 수령 상태</li>
-    <li data-ko="선물 뽑기 이용 기록" data-en="Gift draw usage records">선물 뽑기 이용 기록</li>
-  </ul>
-
-  <h2 data-ko="2. 제3자 서비스" data-en="2. Third-Party Services">2. 제3자 서비스</h2>
-  <p data-ko="서비스는 다음 제3자 서비스를 이용하며, 각 서비스로 전송되는 데이터는 아래와 같습니다:" data-en="The Service uses the following third-party services. Data transmitted to each service is described below:">서비스는 다음 제3자 서비스를 이용하며, 각 서비스로 전송되는 데이터는 아래와 같습니다:</p>
-  <ul>
-    <li data-ko="Cloudflare, Inc. — 서버 호스팅, 데이터베이스(D1), KV 저장소. 서버 요청 로그, 게임 데이터, 닉네임이 전송됩니다. Cloudflare 개인정보처리방침 적용." data-en="Cloudflare, Inc. — server hosting, database (D1), KV storage. Server request logs, game data, and nicknames are transmitted. Subject to Cloudflare Privacy Policy.">Cloudflare, Inc. — 서버 호스팅, 데이터베이스(D1), KV 저장소. 서버 요청 로그, 게임 데이터, 닉네임이 전송됩니다. Cloudflare 개인정보처리방침 적용.</li>
-    <li data-ko="Google AdMob (앱 내) — 보상형 광고. Google 및 파트너사가 광고 제공 및 측정을 위해 광고 ID(GAID/IDFA), IP 주소, 기기 모델, 앱 상호작용 데이터를 수집할 수 있습니다. 맞춤 광고를 원하지 않는 경우 기기 설정 또는 Google 광고 설정(https://myadactivity.google.com/activitycontrols)에서 비활성화할 수 있습니다. Google 개인정보처리방침 적용." data-en="Google AdMob (in-app) — rewarded ads. Google and its partners may collect Advertising ID (GAID/IDFA), IP address, device model, and app interaction data for ad serving and measurement. You can opt out of personalized ads in your device settings or Google Ads Settings (https://myadactivity.google.com/activitycontrols). Subject to Google Privacy Policy.">Google AdMob (앱 내) — 보상형 광고. Google 및 파트너사가 광고 제공 및 측정을 위해 광고 ID(GAID/IDFA), IP 주소, 기기 모델, 앱 상호작용 데이터를 수집할 수 있습니다. 맞춤 광고를 원하지 않는 경우 기기 설정 또는 Google 광고 설정(https://myadactivity.google.com/activitycontrols)에서 비활성화할 수 있습니다. Google 개인정보처리방침 적용.</li>
-  </ul>
-
-  <h2 data-ko="3. 이용 목적" data-en="3. Purpose of Data Use">3. 이용 목적</h2>
-  <ul>
-    <li data-ko="게임 서비스 제공 (점수 저장, 랭킹, 상점, 아이템 관리)" data-en="Providing game service (score saving, ranking, shop, item management)">게임 서비스 제공 (점수 저장, 랭킹, 상점, 아이템 관리)</li>
-    <li data-ko="일일 보상 시스템 운영 (출석 선물, 퀘스트, 선물 뽑기, VIP)" data-en="Operating daily reward system (check-in gifts, quests, gift draws, VIP)">일일 보상 시스템 운영 (출석 선물, 퀘스트, 선물 뽑기, VIP)</li>
-    <li data-ko="광고 표시 (부활 시 보상형 광고)" data-en="Displaying ads (rewarded ads for revival)">광고 표시 (부활 시 보상형 광고)</li>
-    <li data-ko="서비스 개선 및 오류 분석" data-en="Service improvement and error analysis">서비스 개선 및 오류 분석</li>
-    <li data-ko="부적절한 확성기 메시지 신고 처리" data-en="Processing reports of inappropriate megaphone messages">부적절한 확성기 메시지 신고 처리</li>
-  </ul>
-
-  <h2 data-ko="4. 데이터 보안" data-en="4. Data Security">4. 데이터 보안</h2>
-  <p data-ko="서버와의 모든 데이터 통신은 TLS/HTTPS로 암호화됩니다. 업계 표준 보안 관행을 적용하여 데이터를 보호합니다." data-en="All data communications with our servers are encrypted via TLS/HTTPS. We apply industry-standard security practices to protect your data.">서버와의 모든 데이터 통신은 TLS/HTTPS로 암호화됩니다. 업계 표준 보안 관행을 적용하여 데이터를 보호합니다.</p>
-
-  <h2 data-ko="5. 보유 및 파기" data-en="5. Data Retention">5. 보유 및 파기</h2>
-  <ul>
-    <li data-ko="서버 데이터 (계정, 점수, 닉네임, 재화, 확성기 메시지): 서비스 이용 기간 동안 보유. 계정 삭제 요청 시 30일 이내에 모든 서버 데이터를 파기합니다." data-en="Server data (account, scores, nickname, currency, megaphone messages): Retained during service use. All server data destroyed within 30 days of account deletion request.">서버 데이터 (계정, 점수, 닉네임, 재화, 확성기 메시지): 서비스 이용 기간 동안 보유. 계정 삭제 요청 시 30일 이내에 모든 서버 데이터를 파기합니다.</li>
-    <li data-ko="로컬 데이터 (localStorage): 브라우저 데이터 삭제 또는 앱 삭제 시 자동 제거됩니다." data-en="Local data (localStorage): Automatically removed when browser data is cleared or app is uninstalled.">로컬 데이터 (localStorage): 브라우저 데이터 삭제 또는 앱 삭제 시 자동 제거됩니다.</li>
-    <li data-ko="제3자 서비스 데이터: 각 서비스의 개인정보처리방침에 따릅니다." data-en="Third-party data: Subject to each service's respective privacy policy.">제3자 서비스 데이터: 각 서비스의 개인정보처리방침에 따릅니다.</li>
-    <li data-ko="관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다." data-en="If retention is required by applicable laws, data will be stored for the legally required period.">관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</li>
-  </ul>
-
-  <h2 data-ko="6. 제3자 제공" data-en="6. Data Sharing">6. 제3자 제공</h2>
-  <p data-ko="이용자의 개인정보를 판매하거나 제3자에게 제공하지 않습니다. 위 2항에 명시된 서비스 제공 목적으로만 플랫폼 서비스에 데이터가 전송됩니다." data-en="We do not sell or share your personal information. Data is only transmitted to the platform services listed in Section 2, solely for the purposes described.">이용자의 개인정보를 판매하거나 제3자에게 제공하지 않습니다. 위 2항에 명시된 서비스 제공 목적으로만 플랫폼 서비스에 데이터가 전송됩니다.</p>
-
-  <h2 data-ko="7. 이용자의 권리 및 계정 삭제" data-en="7. Your Rights & Account Deletion">7. 이용자의 권리 및 계정 삭제</h2>
-  <ul>
-    <li data-ko="계정 삭제: 앱 내 설정 > 계정 삭제 메뉴를 통해 요청하거나, 아래 이메일로 '계정 삭제 요청' 제목으로 문의하세요. 30일 이내에 모든 서버 데이터가 삭제됩니다." data-en="Account deletion: Use Settings > Delete Account in the app, or email us with subject 'Account Deletion Request'. All server data will be deleted within 30 days.">계정 삭제: 앱 내 설정 > 계정 삭제 메뉴를 통해 요청하거나, 아래 이메일로 '계정 삭제 요청' 제목으로 문의하세요. 30일 이내에 모든 서버 데이터가 삭제됩니다.</li>
-    <li data-ko="로컬 데이터 삭제: 브라우저 사이트 데이터 삭제 또는 앱 삭제" data-en="Delete local data: Clear site data in browser or uninstall the app">로컬 데이터 삭제: 브라우저 사이트 데이터 삭제 또는 앱 삭제</li>
-    <li data-ko="광고 개인화 거부: 기기 설정에서 광고 ID 재설정 또는 추적 비활성화" data-en="Opt out of personalized ads: Reset Advertising ID or disable tracking in device settings">광고 개인화 거부: 기기 설정에서 광고 ID 재설정 또는 추적 비활성화</li>
-    <li data-ko="개인정보 열람/정정 요청: 아래 이메일로 '데이터 요청' 제목으로 문의하세요. 30일 이내에 응답합니다." data-en="Data access/correction request: Email us with subject 'Data Request'. We will respond within 30 days.">개인정보 열람/정정 요청: 아래 이메일로 '데이터 요청' 제목으로 문의하세요. 30일 이내에 응답합니다.</li>
-  </ul>
-
-  <h2 data-ko="8. 아동 보호" data-en="8. Children's Privacy">8. 아동 보호</h2>
-  <p data-ko="본 서비스는 전체 이용가(IARC 3+)입니다. 만 14세 미만(또는 해당 관할권의 적용 연령 미만) 아동의 개인정보를 의도적으로 수집하지 않습니다. 수집된 사실을 인지하면 즉시 삭제합니다." data-en="This Service is rated for all ages (IARC 3+). We do not knowingly collect personal information from children under 14 (or the applicable age in your jurisdiction). If we learn such information has been provided, we will delete it immediately.">본 서비스는 전체 이용가(IARC 3+)입니다. 만 14세 미만(또는 해당 관할권의 적용 연령 미만) 아동의 개인정보를 의도적으로 수집하지 않습니다. 수집된 사실을 인지하면 즉시 삭제합니다.</p>
-
-  <h2 data-ko="9. 처리방침 변경" data-en="9. Changes to This Policy">9. 처리방침 변경</h2>
-  <p data-ko="본 방침은 필요에 따라 변경될 수 있습니다. 변경 시 시행일 7일 전 서비스 내 공지를 통해 안내하며, 이 페이지에 최신 내용을 게시합니다." data-en="We may update this policy as needed. Changes will be announced in-service at least 7 days before the effective date, and the latest version will be posted on this page.">본 방침은 필요에 따라 변경될 수 있습니다. 변경 시 시행일 7일 전 서비스 내 공지를 통해 안내하며, 이 페이지에 최신 내용을 게시합니다.</p>
-
-  <h2 data-ko="10. 문의" data-en="10. Contact Us">10. 문의</h2>
-  <div class="cb">
-    <strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br>
-    <span data-ko="에이치아이티 (HIT)" data-en="HIT">에이치아이티 (HIT)</span><br>
-    <span data-ko="대표: 김하림" data-en="CEO: Harrim Kim">대표: 김하림</span><br>
-    <span data-ko="사업자등록번호: 330-74-00635" data-en="Business Reg. No.: 330-74-00635">사업자등록번호: 330-74-00635</span><br>
-    <span data-ko="주소: 인천광역시 부평구 후정로 8, 107동 1304호" data-en="Address: 107-1304, 8 Hujeong-ro, Bupyeong-gu, Incheon, Korea">주소: 인천광역시 부평구 후정로 8, 107동 1304호</span><br>
-    <span data-ko="이메일: harrimkim@gmail.com" data-en="Email: harrimkim@gmail.com">이메일: harrimkim@gmail.com</span>
-  </div>
-</div></div>
-
-<!-- Knock Knock Privacy -->
-<div id="kk" class="pg"><div>
-  <button class="back" onclick="go('home')">← <span data-ko="돌아가기" data-en="Back">돌아가기</span></button>
-  <h1 data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</h1>
-  <div class="mt">Knock Knock · <span data-ko="시행일" data-en="Effective">시행일</span> 2026.04.14</div>
-  <p data-ko="에이치아이티(이하 '회사')는 Knock Knock(이하 '서비스') 이용자의 개인정보를 소중히 보호합니다." data-en="HIT ('Company') values and protects the personal information of Knock Knock ('Service') users.">에이치아이티(이하 '회사')는 Knock Knock(이하 '서비스') 이용자의 개인정보를 소중히 보호합니다.</p>
-  <h2 data-ko="1. 수집하는 정보" data-en="1. Information We Collect">1. 수집하는 정보</h2>
-  <ul><li data-ko="이메일 주소 — 계정 인증" data-en="Email address — account verification">이메일 주소 — 계정 인증</li><li data-ko="닉네임 및 프로필 — 서비스 내 표시" data-en="Nickname and profile — in-service display">닉네임 및 프로필 — 서비스 내 표시</li><li data-ko="메시지 내용 — 종단간 암호화 전송" data-en="Message content — end-to-end encrypted">메시지 내용 — 종단간 암호화 전송</li><li data-ko="기기 정보 — 푸시 알림" data-en="Device information — push notifications">기기 정보 — 푸시 알림</li></ul>
-  <h2 data-ko="2. 이용 목적" data-en="2. Purpose of Use">2. 이용 목적</h2>
-  <ul><li data-ko="메시지 전달 서비스 제공" data-en="Providing message delivery service">메시지 전달 서비스 제공</li><li data-ko="계정 관리 및 인증" data-en="Account management and verification">계정 관리 및 인증</li><li data-ko="푸시 알림 발송" data-en="Sending push notifications">푸시 알림 발송</li></ul>
-  <h2 data-ko="3. 보유 기간" data-en="3. Retention Period">3. 보유 기간</h2>
-  <p data-ko="계정 삭제 시 즉시 파기합니다. 메시지는 수신 확인 후 서버에서 삭제됩니다." data-en="Destroyed immediately upon account deletion. Messages are deleted from the server after read confirmation.">계정 삭제 시 즉시 파기합니다. 메시지는 수신 확인 후 서버에서 삭제됩니다.</p>
-  <h2 data-ko="4. 제3자 제공" data-en="4. Third-Party Sharing">4. 제3자 제공</h2>
-  <p data-ko="사용자 동의 없이 제3자에게 제공하지 않습니다." data-en="Not shared with third parties without user consent.">사용자 동의 없이 제3자에게 제공하지 않습니다.</p>
-  <h2 data-ko="5. 문의" data-en="5. Contact">5. 문의</h2>
-  <div class="cb"><strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br><span data-ko="김하림 · harrimkim@gmail.com" data-en="Harrim Kim · harrimkim@gmail.com">김하림 · harrimkim@gmail.com</span></div>
-</div></div>
-
 <script>
 let l='ko';
 function L(v){l=v;document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent.trim()===(v==='ko'?'한국어':'English')));document.querySelectorAll('[data-ko][data-en]').forEach(e=>{const t=e.getAttribute('data-'+v);t.includes('\\n')?e.innerHTML=t.replace(/\\n/g,'<br>'):e.textContent=t});document.documentElement.lang=v}
-function go(id){document.getElementById('home').style.display=id==='home'?'':'none';document.querySelectorAll('.pg').forEach(p=>p.classList.toggle('on',p.id===id));window.scrollTo({top:0});history.pushState(null,'',id==='home'?location.pathname:'#'+id)}
-addEventListener('load',()=>{const h=location.hash.slice(1);if(h)go(h);const p=new URLSearchParams(location.search).get('lang');if(p)L(p);else if(!navigator.language.startsWith('ko'))L('en')});
-addEventListener('popstate',()=>go(location.hash.slice(1)||'home'));
+const p=new URLSearchParams(location.search).get('lang');if(p)L(p);else if(!navigator.language.startsWith('ko'))L('en');
 </script>
 
 </body>

@@ -7,73 +7,55 @@
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f425.svg" type="image/svg+xml" />
   <meta name="theme-color" content="#ffffff" />
   <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    :root{
-      --bg:#fff;--bg2:#f9fafb;--text:#111827;--sub:#6b7280;--dim:#9ca3af;
-      --border:#e5e7eb;--r:12px;
-      --max:1080px;--narrow:640px;
-    }
-    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#fff;color:#111;line-height:1.6;min-height:100vh}
     a{color:inherit;text-decoration:none}
-    .c{max-width:var(--max);margin:0 auto;padding:0 24px}
-
-    .fi{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-    .fi.v{opacity:1;transform:none}
 
     /* Nav */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .ni{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
-    .logo{font-size:20px;font-weight:800;letter-spacing:-.5px;color:var(--text)}
+    nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #eee}
+    .ni{max-width:640px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-size:18px;font-weight:800;letter-spacing:-.5px}
     .nr{display:flex;gap:4px}
-    .lb{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:0;color:var(--dim);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
-    .lb.on{background:var(--text);color:#fff;border-color:var(--text)}
+    .lb{padding:5px 12px;border-radius:6px;border:1px solid #ddd;background:0;color:#999;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:inherit}
+    .lb.on{background:#111;color:#fff;border-color:#111}
 
     /* Hero */
-    .hero{padding:160px 24px 120px;text-align:center}
-    .hero h1{font-size:clamp(36px,6vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:20px;color:var(--text)}
-    .hero p{font-size:18px;color:var(--sub);max-width:400px;margin:0 auto;line-height:1.6}
+    .hero{text-align:center;padding:80px 20px 60px}
+    .hero h1{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:12px}
+    .hero p{font-size:16px;color:#888;max-width:360px;margin:0 auto;line-height:1.7}
 
     /* Section */
-    .sec{padding:96px 0}
-    .sec-a{background:var(--bg2)}
-    .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
-    .sh{font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-bottom:48px}
+    .sec{max-width:640px;margin:0 auto;padding:48px 20px}
+    .sec h2{font-size:18px;font-weight:700;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid #eee}
 
-    /* Product cards */
-    .pg2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-    .pc{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:32px;transition:all .3s ease}
-    .pc:hover{box-shadow:0 12px 32px rgba(0,0,0,.08);transform:translateY(-3px)}
-    .pc-icon{font-size:32px;margin-bottom:20px}
-    .pc h3{font-size:18px;font-weight:700;margin-bottom:8px}
-    .pc p{font-size:14px;color:var(--sub);line-height:1.7;margin-bottom:24px}
-    .pc-link{font-size:13px;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:4px;padding:8px 0;border-bottom:1.5px solid var(--text);transition:opacity .2s}
-    .pc-link:hover{opacity:.6}
+    /* Service cards */
+    .sc{border:1px solid #eee;border-radius:14px;padding:24px;margin-bottom:14px;display:flex;gap:18px;align-items:flex-start;transition:border-color .2s}
+    .sc:hover{border-color:#999}
+    .sc-icon{width:56px;height:56px;border-radius:14px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0}
+    .sc-body{flex:1;min-width:0}
+    .sc-body h3{font-size:17px;font-weight:700;margin-bottom:4px}
+    .sc-body p{font-size:14px;color:#888;line-height:1.7;margin-bottom:12px}
+    .sc-tags{display:flex;gap:6px;flex-wrap:wrap}
+    .sc-tag{font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid #ddd;color:#888;cursor:pointer;transition:all .2s;background:0;font-family:inherit}
+    .sc-tag:hover{background:#111;color:#fff;border-color:#111}
 
-    /* Company */
-    .info{display:grid;grid-template-columns:1fr 1px 1fr;gap:48px;max-width:var(--narrow);margin:0 auto}
-    .info-div{background:var(--border)}
-    .info-col h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:20px}
-    .info-row{display:flex;justify-content:space-between;padding:8px 0;font-size:14px}
-    .info-row span:first-child{color:var(--sub)}
-    .info-row span:last-child{font-weight:600;text-align:right}
-    @media(max-width:580px){.info{grid-template-columns:1fr;gap:32px}.info-div{display:none}}
+    /* Footer */
+    footer{max-width:640px;margin:0 auto;padding:40px 20px 60px;border-top:1px solid #eee;font-size:13px;color:#999;line-height:2.2}
+    footer strong{color:#666}
 
-    /* Legal */
-    .page{display:none;padding:140px 0 80px}.page.on{display:block}
-    .page .c{max-width:var(--narrow)}
-    .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--sub);margin-bottom:40px;cursor:pointer;background:0;border:0;font-family:inherit;transition:color .2s}
-    .back:hover{color:var(--text)}
-    .page h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
-    .page .mt{font-size:13px;color:var(--dim);margin-bottom:48px}
-    .page h2{font-size:15px;font-weight:700;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border)}
-    .page p{font-size:15px;color:var(--sub);margin-bottom:12px;line-height:1.7}
-    .page ul{padding-left:20px;margin-bottom:12px}
-    .page li{font-size:15px;color:var(--sub);margin-bottom:6px;line-height:1.7}
-    .cbox{background:var(--bg2);border-radius:var(--r);padding:20px 24px;margin-top:16px;font-size:14px;color:var(--sub);line-height:1.8}
-    .cbox strong{color:var(--text)}
-
-    footer{text-align:center;padding:48px 24px;font-size:12px;color:var(--dim);border-top:1px solid var(--border)}
+    /* Legal pages */
+    .pg{display:none;max-width:640px;margin:0 auto;padding:100px 20px 80px}
+    .pg.on{display:block}
+    .back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#999;margin-bottom:32px;cursor:pointer;background:0;border:0;font-family:inherit;transition:color .2s}
+    .back:hover{color:#111}
+    .pg h1{font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
+    .pg .mt{font-size:13px;color:#bbb;margin-bottom:40px}
+    .pg h2{font-size:15px;font-weight:700;margin:36px 0 10px;padding-bottom:8px;border-bottom:1px solid #eee}
+    .pg p{font-size:15px;color:#666;margin-bottom:10px;line-height:1.8}
+    .pg ul{padding-left:20px;margin-bottom:10px}
+    .pg li{font-size:15px;color:#666;margin-bottom:6px;line-height:1.8}
+    .cb{background:#f9f9f9;border-radius:10px;padding:16px 20px;margin-top:12px;font-size:14px;color:#666;line-height:2}
+    .cb strong{color:#333}
   </style>
 </head>
 <body>
@@ -82,62 +64,56 @@
   <div class="logo">HIT</div>
   <div class="nr">
     <button class="lb on" onclick="L('ko')">한국어</button>
-    <button class="lb" onclick="L('en')">EN</button>
+    <button class="lb" onclick="L('en')">English</button>
   </div>
 </div></nav>
 
 <div id="home">
 
-<section class="hero">
-  <h1 class="fi" data-ko="일상에 즐거움을&#10;더하는 서비스" data-en="Services that&#10;add joy to life">일상에 즐거움을<br>더하는 서비스</h1>
-  <p class="fi" data-ko="에이치아이티는 모든 세대가 쉽고 재미있게 즐길 수 있는 모바일 서비스를 만듭니다." data-en="HIT builds mobile services that anyone can enjoy — easy, fun, and meaningful.">에이치아이티는 모든 세대가 쉽고 재미있게 즐길 수 있는 모바일 서비스를 만듭니다.</p>
-</section>
+<div class="hero">
+  <h1 data-ko="일상에 즐거움을 더하는 서비스" data-en="Services that add joy to everyday life">일상에 즐거움을 더하는 서비스</h1>
+  <p data-ko="모든 세대가 쉽고 재미있게 즐길 수 있는 모바일 서비스를 만듭니다." data-en="We build mobile services that anyone can enjoy — easy, fun, and meaningful.">모든 세대가 쉽고 재미있게 즐길 수 있는 모바일 서비스를 만듭니다.</p>
+</div>
 
-<section class="sec sec-a"><div class="c">
-  <div class="tag fi">Services</div>
-  <h2 class="sh fi" data-ko="우리가 만드는 것" data-en="What we build">우리가 만드는 것</h2>
-  <div class="pg2">
-    <div class="pc fi">
-      <div class="pc-icon">❤️</div>
+<div class="sec">
+  <h2 data-ko="서비스" data-en="Services">서비스</h2>
+
+  <div class="sc">
+    <div class="sc-icon">❤️</div>
+    <div class="sc-body">
       <h3>Heart Rush</h3>
-      <p data-ko="60초 안에 같은 색 하트를 찾는 캐주얼 게임. 매일 새로운 도전과 보상이 기다립니다." data-en="A casual game — find matching hearts in 60 seconds. Daily challenges and rewards await.">60초 안에 같은 색 하트를 찾는 캐주얼 게임. 매일 새로운 도전과 보상이 기다립니다.</p>
-      <button class="pc-link" onclick="go('hr')"><span data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</span> →</button>
+      <p data-ko="60초 안에 같은 색 하트를 찾는 캐주얼 게임. 매일 새로운 도전과 보상이 기다립니다." data-en="Find matching hearts in 60 seconds. Daily challenges and rewards await.">60초 안에 같은 색 하트를 찾는 캐주얼 게임. 매일 새로운 도전과 보상이 기다립니다.</p>
+      <div class="sc-tags">
+        <button class="sc-tag" onclick="go('hr')" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</button>
+      </div>
     </div>
-    <div class="pc fi">
-      <div class="pc-icon">💬</div>
+  </div>
+
+  <div class="sc">
+    <div class="sc-icon">💬</div>
+    <div class="sc-body">
       <h3>Knock Knock</h3>
       <p data-ko="소중한 사람에게 매일 따뜻한 감사 메시지를 전하고, 건강 데이터도 함께 확인하세요." data-en="Send warm messages to loved ones daily and check health data together.">소중한 사람에게 매일 따뜻한 감사 메시지를 전하고, 건강 데이터도 함께 확인하세요.</p>
-      <button class="pc-link" onclick="go('kk')"><span data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</span> →</button>
+      <div class="sc-tags">
+        <button class="sc-tag" onclick="go('kk')" data-ko="개인정보처리방침" data-en="Privacy Policy">개인정보처리방침</button>
+      </div>
     </div>
   </div>
-</div></section>
+</div>
 
-<section class="sec"><div class="c">
-  <div class="tag fi">Company</div>
-  <h2 class="sh fi" data-ko="회사 정보" data-en="About">회사 정보</h2>
-  <div class="info">
-    <div class="info-col fi">
-      <h4>Info</h4>
-      <div class="info-row"><span data-ko="상호" data-en="Name">상호</span><span data-ko="에이치아이티" data-en="HIT">에이치아이티</span></div>
-      <div class="info-row"><span data-ko="대표" data-en="CEO">대표</span><span data-ko="김하림" data-en="Harrim Kim">김하림</span></div>
-      <div class="info-row"><span data-ko="사업자번호" data-en="Reg. No.">사업자번호</span><span>330-74-00635</span></div>
-      <div class="info-row"><span data-ko="업종" data-en="Industry">업종</span><span data-ko="정보통신업" data-en="IT / Software">정보통신업</span></div>
-    </div>
-    <div class="info-div"></div>
-    <div class="info-col fi">
-      <h4>Contact</h4>
-      <div class="info-row"><span data-ko="소재지" data-en="Address">소재지</span><span data-ko="인천광역시 부평구 후정로 8" data-en="8 Hujeong-ro, Bupyeong-gu">인천광역시 부평구 후정로 8</span></div>
-      <div class="info-row"><span></span><span data-ko="107동 1304호" data-en="Incheon, Korea">107동 1304호</span></div>
-      <div class="info-row"><span data-ko="이메일" data-en="Email">이메일</span><span>support@hitworks.co</span></div>
-      <div class="info-row"><span data-ko="설립" data-en="Est.">설립</span><span>2026. 03</span></div>
-    </div>
-  </div>
-</div></section>
+<footer>
+  <strong data-ko="에이치아이티 (HIT)" data-en="HIT">에이치아이티 (HIT)</strong><br>
+  <span data-ko="대표: 김하림" data-en="CEO: Harrim Kim">대표: 김하림</span><br>
+  <span data-ko="사업자등록번호: 330-74-00635" data-en="Business Reg. No.: 330-74-00635">사업자등록번호: 330-74-00635</span><br>
+  <span data-ko="주소: 인천광역시 부평구 후정로 8, 107동 1304호" data-en="Address: 107-1304, 8 Hujeong-ro, Bupyeong-gu, Incheon, Korea">주소: 인천광역시 부평구 후정로 8, 107동 1304호</span><br>
+  <span data-ko="이메일: support@hitworks.co" data-en="Email: support@hitworks.co">이메일: support@hitworks.co</span><br><br>
+  &copy; 2026 HIT. All rights reserved.
+</footer>
 
 </div>
 
 <!-- Heart Rush Privacy -->
-<div id="hr" class="page"><div class="c">
+<div id="hr" class="pg"><div>
   <button class="back" onclick="go('home')">← <span data-ko="돌아가기" data-en="Back">돌아가기</span></button>
   <h1 data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</h1>
   <div class="mt">Heart Rush · <span data-ko="시행일" data-en="Effective">시행일</span> 2026.04.14</div>
@@ -149,18 +125,17 @@
   <h2 data-ko="3. 보유 기간" data-en="3. Retention Period">3. 보유 기간</h2>
   <p data-ko="서비스 이용 기간 동안 보유하며, 계정 삭제 요청 시 30일 이내에 파기합니다." data-en="Retained during service use. Destroyed within 30 days of account deletion request.">서비스 이용 기간 동안 보유하며, 계정 삭제 요청 시 30일 이내에 파기합니다.</p>
   <h2 data-ko="4. 제3자 제공" data-en="4. Third-Party Sharing">4. 제3자 제공</h2>
-  <p data-ko="원칙적으로 제3자에게 제공하지 않습니다. 예외:" data-en="Not shared with third parties in principle. Exceptions:">원칙적으로 제3자에게 제공하지 않습니다. 예외:</p>
-  <ul><li data-ko="법령에 의한 요구" data-en="Legal requirements">법령에 의한 요구</li><li data-ko="사용자의 사전 동의" data-en="Prior user consent">사용자의 사전 동의</li></ul>
+  <p data-ko="원칙적으로 제3자에게 제공하지 않습니다. 법령에 의한 요구 또는 사용자의 사전 동의가 있는 경우는 예외입니다." data-en="Not shared with third parties in principle, except when required by law or with prior user consent.">원칙적으로 제3자에게 제공하지 않습니다. 법령에 의한 요구 또는 사용자의 사전 동의가 있는 경우는 예외입니다.</p>
   <h2 data-ko="5. 광고" data-en="5. Advertising">5. 광고</h2>
   <p data-ko="Google AdMob을 통해 광고가 표시될 수 있으며, 광고 ID가 수집될 수 있습니다." data-en="Ads may be displayed through Google AdMob, which may collect advertising IDs.">Google AdMob을 통해 광고가 표시될 수 있으며, 광고 ID가 수집될 수 있습니다.</p>
   <h2 data-ko="6. 아동 보호" data-en="6. Children's Privacy">6. 아동 보호</h2>
   <p data-ko="만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다." data-en="We do not intentionally collect information from children under 14.">만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
   <h2 data-ko="7. 문의" data-en="7. Contact">7. 문의</h2>
-  <div class="cbox"><strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br><span data-ko="김하림" data-en="Harrim Kim">김하림</span> · support@hitworks.co</div>
+  <div class="cb"><strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br><span data-ko="김하림 · support@hitworks.co" data-en="Harrim Kim · support@hitworks.co">김하림 · support@hitworks.co</span></div>
 </div></div>
 
 <!-- Knock Knock Privacy -->
-<div id="kk" class="page"><div class="c">
+<div id="kk" class="pg"><div>
   <button class="back" onclick="go('home')">← <span data-ko="돌아가기" data-en="Back">돌아가기</span></button>
   <h1 data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</h1>
   <div class="mt">Knock Knock · <span data-ko="시행일" data-en="Effective">시행일</span> 2026.04.14</div>
@@ -174,17 +149,13 @@
   <h2 data-ko="4. 제3자 제공" data-en="4. Third-Party Sharing">4. 제3자 제공</h2>
   <p data-ko="사용자 동의 없이 제3자에게 제공하지 않습니다." data-en="Not shared with third parties without user consent.">사용자 동의 없이 제3자에게 제공하지 않습니다.</p>
   <h2 data-ko="5. 문의" data-en="5. Contact">5. 문의</h2>
-  <div class="cbox"><strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br><span data-ko="김하림" data-en="Harrim Kim">김하림</span> · support@hitworks.co</div>
+  <div class="cb"><strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br><span data-ko="김하림 · support@hitworks.co" data-en="Harrim Kim · support@hitworks.co">김하림 · support@hitworks.co</span></div>
 </div></div>
-
-<footer>&copy; 2026 HIT</footer>
 
 <script>
 let l='ko';
-function L(v){l=v;document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent.trim()===(v==='ko'?'한국어':'EN')));document.querySelectorAll('[data-ko][data-en]').forEach(e=>{const t=e.getAttribute('data-'+v);e.tagName==='H1'&&t.includes('\\n')?e.innerHTML=t.replace('\\n','<br>'):e.textContent=t});document.documentElement.lang=v}
-function go(id){document.getElementById('home').style.display=id==='home'?'':'none';document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));window.scrollTo({top:0});history.pushState(null,'',id==='home'?location.pathname:'#'+id)}
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')}),{threshold:.1});
-document.querySelectorAll('.fi').forEach(e=>io.observe(e));
+function L(v){l=v;document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent.trim()===(v==='ko'?'한국어':'English')));document.querySelectorAll('[data-ko][data-en]').forEach(e=>e.textContent=e.getAttribute('data-'+v));document.documentElement.lang=v}
+function go(id){document.getElementById('home').style.display=id==='home'?'':'none';document.querySelectorAll('.pg').forEach(p=>p.classList.toggle('on',p.id===id));window.scrollTo({top:0});history.pushState(null,'',id==='home'?location.pathname:'#'+id)}
 addEventListener('load',()=>{const h=location.hash.slice(1);if(h)go(h);if(new URLSearchParams(location.search).get('lang')==='en')L('en')});
 addEventListener('popstate',()=>go(location.hash.slice(1)||'home'));
 </script>

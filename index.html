@@ -3,337 +3,294 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HIT Works - Legal</title>
+  <title>HIT Works</title>
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #12121a;
-      --border: rgba(255,255,255,0.08);
-      --text: #e8e8ee;
-      --muted: #8888a0;
-      --accent: #de2f44;
-      --accent-soft: rgba(222,47,68,0.15);
+      --bg: #0b0b12;
+      --card: #14141f;
+      --border: rgba(255,255,255,0.06);
+      --text: #eaeaf0;
+      --sub: #9090a8;
+      --dim: #60607a;
+      --red: #de2f44;
+      --red-soft: rgba(222,47,68,0.12);
+      --gold: #fdcb59;
+      --gold-soft: rgba(253,203,89,0.1);
+      --blue: #5dadec;
+      --blue-soft: rgba(93,173,236,0.1);
+      --radius: 16px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
       background: var(--bg); color: var(--text);
-      line-height: 1.7; -webkit-font-smoothing: antialiased;
+      line-height: 1.8; -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a { color: var(--red); text-decoration: none; }
 
-    /* Nav */
+    /* ─ Nav ─ */
     nav {
       position: sticky; top: 0; z-index: 10;
-      background: rgba(10,10,15,0.9); backdrop-filter: blur(12px);
+      background: rgba(11,11,18,0.85); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 16px 24px;
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 800px; margin: 0 auto;
     }
-    .logo { font-size: 18px; font-weight: 800; color: var(--text); }
-    .logo span { color: var(--accent); }
+    .nav-inner {
+      max-width: 720px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; }
+    .logo span { color: var(--red); }
     .lang-toggle {
-      display: flex; gap: 4px;
-      background: var(--surface); border-radius: 8px; padding: 2px;
+      display: flex; gap: 2px;
+      background: var(--card); border-radius: 10px; padding: 3px;
+      border: 1px solid var(--border);
     }
     .lang-btn {
-      padding: 6px 14px; border-radius: 6px; border: none;
-      font-size: 13px; font-weight: 600; cursor: pointer;
-      background: transparent; color: var(--muted); transition: all 150ms;
+      padding: 5px 14px; border-radius: 8px; border: none;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      background: transparent; color: var(--dim); transition: all 150ms;
     }
-    .lang-btn.active { background: var(--accent-soft); color: var(--accent); }
+    .lang-btn.active { background: var(--red-soft); color: var(--red); }
 
-    /* Content */
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 24px 80px; }
+    /* ─ Layout ─ */
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
 
-    /* Home */
-    .home-hero { text-align: center; padding: 80px 0 40px; }
-    .home-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-    .home-hero p { color: var(--muted); font-size: 16px; }
-
-    .services { display: grid; gap: 16px; margin-top: 40px; }
-    .service-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 24px;
-      display: flex; align-items: center; gap: 16px;
-      transition: border-color 200ms;
+    /* ─ Home ─ */
+    .hero {
+      text-align: center; padding: 72px 0 48px;
     }
-    .service-card:hover { border-color: var(--accent); }
-    .service-icon { font-size: 36px; flex-shrink: 0; }
-    .service-name { font-size: 18px; font-weight: 700; }
-    .service-desc { font-size: 14px; color: var(--muted); margin-top: 4px; }
+    .hero-emoji { font-size: 48px; margin-bottom: 16px; }
+    .hero h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
+    .hero p { color: var(--sub); font-size: 15px; margin-top: 8px; }
 
-    .legal-links {
-      display: flex; gap: 12px; margin-top: 8px;
-    }
-    .legal-link {
-      font-size: 13px; padding: 4px 12px;
-      border-radius: 6px; background: var(--accent-soft);
-      color: var(--accent); font-weight: 600;
-    }
+    .app-grid { display: flex; flex-direction: column; gap: 16px; padding-bottom: 80px; }
 
-    /* Legal pages */
-    .legal-content { display: none; }
-    .legal-content.active { display: block; }
-    .legal-content h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-    .legal-content .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
-    .legal-content h2 {
-      font-size: 18px; font-weight: 700; margin-top: 32px; margin-bottom: 12px;
-      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    .app-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: border-color 200ms, transform 200ms;
     }
-    .legal-content p, .legal-content li { font-size: 15px; color: #c0c0d0; margin-bottom: 8px; }
-    .legal-content ul { padding-left: 20px; }
-    .legal-content .back-btn {
+    .app-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-2px); }
+    .app-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; flex-shrink: 0;
+    }
+    .app-icon.red { background: var(--red-soft); }
+    .app-icon.blue { background: var(--blue-soft); }
+    .app-info { flex: 1; }
+    .app-name { font-size: 20px; font-weight: 800; }
+    .app-desc { font-size: 14px; color: var(--sub); margin-top: 4px; }
+    .app-links { display: flex; gap: 10px; margin-top: 14px; }
+    .app-link {
+      font-size: 13px; font-weight: 700; padding: 7px 16px;
+      border-radius: 10px; cursor: pointer; transition: all 150ms;
+      border: none; color: var(--red); background: var(--red-soft);
+    }
+    .app-link:hover { background: rgba(222,47,68,0.2); }
+
+    /* ─ Legal page ─ */
+    .page { display: none; padding-bottom: 80px; }
+    .page.active { display: block; }
+    .back-link {
       display: inline-flex; align-items: center; gap: 6px;
-      color: var(--muted); font-size: 14px; font-weight: 600;
-      margin-bottom: 24px; cursor: pointer;
+      color: var(--dim); font-size: 14px; font-weight: 700;
+      margin: 32px 0 24px; cursor: pointer; transition: color 150ms;
     }
-    .legal-content .back-btn:hover { color: var(--text); }
+    .back-link:hover { color: var(--text); }
+    .page h1 {
+      font-size: 26px; font-weight: 900; letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .page .meta { color: var(--dim); font-size: 13px; margin-bottom: 36px; }
+    .page h2 {
+      font-size: 16px; font-weight: 800; margin-top: 36px; margin-bottom: 12px;
+      color: var(--text);
+    }
+    .page p { font-size: 15px; color: var(--sub); margin-bottom: 10px; }
+    .page ul { padding-left: 20px; margin-bottom: 10px; }
+    .page li { font-size: 15px; color: var(--sub); margin-bottom: 6px; }
+    .page .highlight {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px; margin: 16px 0;
+      font-size: 14px; color: var(--sub);
+    }
 
-    /* Footer */
+    /* ─ Footer ─ */
     footer {
-      text-align: center; padding: 40px 24px;
+      text-align: center; padding: 32px 24px;
       border-top: 1px solid var(--border);
-      color: var(--muted); font-size: 13px;
+      color: var(--dim); font-size: 12px;
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">HIT <span>Works</span></div>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <div class="nav-inner">
+    <div class="logo">HIT <span>Works</span></div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </nav>
 
-<div class="container">
+<div class="wrap">
 
   <!-- ═══ HOME ═══ -->
   <div id="home">
-    <div class="home-hero">
-      <h1 data-ko="서비스 약관 & 정책" data-en="Terms & Policies">서비스 약관 & 정책</h1>
-      <p data-ko="HIT Works 서비스의 법적 문서를 확인하세요" data-en="Legal documents for HIT Works services">HIT Works 서비스의 법적 문서를 확인하세요</p>
+    <div class="hero">
+      <div class="hero-emoji">❤️</div>
+      <h1 data-ko="HIT Works" data-en="HIT Works">HIT Works</h1>
+      <p data-ko="서비스 개인정보 처리방침" data-en="Service Privacy Policies">서비스 개인정보 처리방침</p>
     </div>
 
-    <div class="services">
-      <!-- Heart Rush -->
-      <div class="service-card">
-        <div class="service-icon">❤️</div>
-        <div>
-          <div class="service-name">Heart Rush</div>
-          <div class="service-desc" data-ko="하트를 찾아라! 캐주얼 색상 매칭 게임" data-en="Find the hearts! Casual color matching game">하트를 찾아라! 캐주얼 색상 매칭 게임</div>
-          <div class="legal-links">
-            <a class="legal-link" href="#" onclick="showPage('privacy-heartrush')" data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</a>
-            <a class="legal-link" href="#" onclick="showPage('terms-heartrush')" data-ko="이용약관" data-en="Terms of Service">이용약관</a>
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-icon red">❤️</div>
+        <div class="app-info">
+          <div class="app-name">Heart Rush</div>
+          <div class="app-desc" data-ko="하트를 찾아라! 캐주얼 색상 매칭 게임" data-en="Find the hearts! Casual color matching game">하트를 찾아라! 캐주얼 색상 매칭 게임</div>
+          <div class="app-links">
+            <button class="app-link" onclick="go('heartrush')" data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</button>
           </div>
         </div>
       </div>
 
-      <!-- Knock Knock -->
-      <div class="service-card">
-        <div class="service-icon">💬</div>
-        <div>
-          <div class="service-name">Knock Knock</div>
-          <div class="service-desc" data-ko="따뜻한 한마디, 매일 주고받는 감사 메시지" data-en="Share warm messages of gratitude every day">따뜻한 한마디, 매일 주고받는 감사 메시지</div>
-          <div class="legal-links">
-            <a class="legal-link" href="#" onclick="showPage('privacy-knockknock')" data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</a>
-            <a class="legal-link" href="#" onclick="showPage('terms-knockknock')" data-ko="이용약관" data-en="Terms of Service">이용약관</a>
+      <div class="app-card">
+        <div class="app-icon blue">💬</div>
+        <div class="app-info">
+          <div class="app-name">Knock Knock</div>
+          <div class="app-desc" data-ko="따뜻한 한마디, 매일 주고받는 감사 메시지" data-en="Share warm messages of gratitude every day">따뜻한 한마디, 매일 주고받는 감사 메시지</div>
+          <div class="app-links">
+            <button class="app-link" onclick="go('knockknock')" data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ Heart Rush 개인정보 처리방침 ═══ -->
-  <div id="privacy-heartrush" class="legal-content">
-    <div class="back-btn" onclick="showPage('home')">❮ <span data-ko="돌아가기" data-en="Back">돌아가기</span></div>
+  <!-- ═══ Heart Rush ═══ -->
+  <div id="heartrush" class="page">
+    <div class="back-link" onclick="go('home')">❮ <span data-ko="돌아가기" data-en="Back">돌아가기</span></div>
     <h1 data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</h1>
-    <div class="subtitle">Heart Rush · <span data-ko="최종 수정" data-en="Last updated">최종 수정</span>: 2026-04-14</div>
+    <div class="meta">Heart Rush · <span data-ko="시행일" data-en="Effective">시행일</span> 2026.04.14</div>
 
-    <h2 data-ko="1. 수집하는 개인정보" data-en="1. Information We Collect">1. 수집하는 개인정보</h2>
-    <p data-ko="Heart Rush(이하 '서비스')는 다음과 같은 정보를 수집합니다:" data-en="Heart Rush ('Service') collects the following information:">Heart Rush(이하 '서비스')는 다음과 같은 정보를 수집합니다:</p>
+    <p data-ko="HIT Works(이하 '회사')는 Heart Rush(이하 '서비스') 이용자의 개인정보를 소중히 보호합니다." data-en="HIT Works ('Company') values and protects the personal information of Heart Rush ('Service') users.">HIT Works(이하 '회사')는 Heart Rush(이하 '서비스') 이용자의 개인정보를 소중히 보호합니다.</p>
+
+    <h2 data-ko="1. 수집하는 정보" data-en="1. Information We Collect">1. 수집하는 정보</h2>
     <ul>
-      <li data-ko="기기 식별자 (익명 ID)" data-en="Device identifier (anonymous ID)">기기 식별자 (익명 ID)</li>
-      <li data-ko="닉네임 (사용자 설정)" data-en="Nickname (user-configured)">닉네임 (사용자 설정)</li>
-      <li data-ko="게임 플레이 데이터 (점수, 진행도)" data-en="Game play data (scores, progress)">게임 플레이 데이터 (점수, 진행도)</li>
-      <li data-ko="확성기 메시지 내용" data-en="Megaphone message content">확성기 메시지 내용</li>
+      <li data-ko="기기 식별자 (익명 ID) — 계정 생성 및 데이터 연동" data-en="Device identifier (anonymous ID) — account creation and data sync">기기 식별자 (익명 ID) — 계정 생성 및 데이터 연동</li>
+      <li data-ko="닉네임 — 랭킹 및 확성기 표시" data-en="Nickname — ranking and megaphone display">닉네임 — 랭킹 및 확성기 표시</li>
+      <li data-ko="게임 데이터 — 점수, 레벨, 보유 아이템" data-en="Game data — scores, level, owned items">게임 데이터 — 점수, 레벨, 보유 아이템</li>
+      <li data-ko="확성기 메시지 — 사용자가 작성한 공개 메시지" data-en="Megaphone messages — public messages created by users">확성기 메시지 — 사용자가 작성한 공개 메시지</li>
     </ul>
 
-    <h2 data-ko="2. 개인정보의 이용 목적" data-en="2. Purpose of Use">2. 개인정보의 이용 목적</h2>
+    <h2 data-ko="2. 이용 목적" data-en="2. Purpose of Use">2. 이용 목적</h2>
     <ul>
-      <li data-ko="게임 서비스 제공 및 계정 관리" data-en="Providing game service and account management">게임 서비스 제공 및 계정 관리</li>
-      <li data-ko="랭킹 시스템 운영" data-en="Operating ranking system">랭킹 시스템 운영</li>
-      <li data-ko="고객 문의 대응" data-en="Responding to customer inquiries">고객 문의 대응</li>
-      <li data-ko="서비스 개선 및 통계 분석" data-en="Service improvement and statistical analysis">서비스 개선 및 통계 분석</li>
+      <li data-ko="게임 서비스 제공 (점수 저장, 랭킹, 아이템 관리)" data-en="Providing game service (score saving, ranking, item management)">게임 서비스 제공 (점수 저장, 랭킹, 아이템 관리)</li>
+      <li data-ko="서비스 개선 및 오류 분석" data-en="Service improvement and error analysis">서비스 개선 및 오류 분석</li>
+      <li data-ko="부적절한 확성기 메시지 신고 처리" data-en="Processing reports of inappropriate megaphone messages">부적절한 확성기 메시지 신고 처리</li>
     </ul>
 
-    <h2 data-ko="3. 개인정보의 보유 및 이용 기간" data-en="3. Retention Period">3. 개인정보의 보유 및 이용 기간</h2>
-    <p data-ko="회원 탈퇴 시 또는 서비스 종료 시 지체 없이 파기합니다. 단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다." data-en="Personal information is destroyed without delay upon account deletion or service termination. However, if retention is required by applicable laws, it will be stored for the required period.">회원 탈퇴 시 또는 서비스 종료 시 지체 없이 파기합니다. 단, 관련 법령에 따라 보존이 필요한 경우 해당 기간 동안 보관합니다.</p>
+    <h2 data-ko="3. 보유 기간" data-en="3. Retention Period">3. 보유 기간</h2>
+    <p data-ko="서비스 이용 기간 동안 보유하며, 계정 삭제 요청 시 30일 이내에 파기합니다." data-en="Retained during service use. Destroyed within 30 days of account deletion request.">서비스 이용 기간 동안 보유하며, 계정 삭제 요청 시 30일 이내에 파기합니다.</p>
 
-    <h2 data-ko="4. 개인정보의 제3자 제공" data-en="4. Third-Party Sharing">4. 개인정보의 제3자 제공</h2>
-    <p data-ko="서비스는 원칙적으로 사용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우는 예외입니다:" data-en="We do not share personal information with third parties in principle. Exceptions include:">서비스는 원칙적으로 사용자의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우는 예외입니다:</p>
+    <h2 data-ko="4. 제3자 제공" data-en="4. Third-Party Sharing">4. 제3자 제공</h2>
+    <p data-ko="원칙적으로 제3자에게 제공하지 않습니다. 예외:" data-en="Not shared with third parties in principle. Exceptions:">원칙적으로 제3자에게 제공하지 않습니다. 예외:</p>
     <ul>
-      <li data-ko="사용자의 동의가 있는 경우" data-en="When user consent is given">사용자의 동의가 있는 경우</li>
-      <li data-ko="법령에 의해 요구되는 경우" data-en="When required by law">법령에 의해 요구되는 경우</li>
+      <li data-ko="법령에 의한 요구" data-en="Legal requirements">법령에 의한 요구</li>
+      <li data-ko="사용자의 사전 동의" data-en="Prior user consent">사용자의 사전 동의</li>
     </ul>
 
-    <h2 data-ko="5. 광고 및 분석" data-en="5. Advertising & Analytics">5. 광고 및 분석</h2>
-    <p data-ko="서비스는 Google AdMob을 통해 광고를 제공할 수 있으며, 이 과정에서 광고 식별자가 수집될 수 있습니다. 자세한 사항은 Google의 개인정보 처리방침을 참고하세요." data-en="The Service may serve ads through Google AdMob, which may collect advertising identifiers. Please refer to Google's Privacy Policy for details.">서비스는 Google AdMob을 통해 광고를 제공할 수 있으며, 이 과정에서 광고 식별자가 수집될 수 있습니다.</p>
+    <h2 data-ko="5. 광고" data-en="5. Advertising">5. 광고</h2>
+    <p data-ko="Google AdMob을 통해 광고가 표시될 수 있으며, 광고 ID가 수집될 수 있습니다." data-en="Ads may be displayed through Google AdMob, which may collect advertising IDs.">Google AdMob을 통해 광고가 표시될 수 있으며, 광고 ID가 수집될 수 있습니다.</p>
 
-    <h2 data-ko="6. 아동의 개인정보 보호" data-en="6. Children's Privacy">6. 아동의 개인정보 보호</h2>
-    <p data-ko="서비스는 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다." data-en="We do not intentionally collect personal information from children under 14.">서비스는 만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+    <h2 data-ko="6. 아동 보호" data-en="6. Children's Privacy">6. 아동 보호</h2>
+    <p data-ko="만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다." data-en="We do not intentionally collect information from children under 14.">만 14세 미만 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
 
-    <h2 data-ko="7. 개인정보 보호책임자" data-en="7. Contact">7. 개인정보 보호책임자</h2>
-    <p data-ko="이메일: support@hitworks.co" data-en="Email: support@hitworks.co">이메일: support@hitworks.co</p>
+    <h2 data-ko="7. 문의" data-en="7. Contact">7. 문의</h2>
+    <div class="highlight">
+      <strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br/>
+      <span data-ko="이메일" data-en="Email">이메일</span>: support@hitworks.co
+    </div>
   </div>
 
-  <!-- ═══ Heart Rush 이용약관 ═══ -->
-  <div id="terms-heartrush" class="legal-content">
-    <div class="back-btn" onclick="showPage('home')">❮ <span data-ko="돌아가기" data-en="Back">돌아가기</span></div>
-    <h1 data-ko="이용약관" data-en="Terms of Service">이용약관</h1>
-    <div class="subtitle">Heart Rush · <span data-ko="최종 수정" data-en="Last updated">최종 수정</span>: 2026-04-14</div>
-
-    <h2 data-ko="제1조 (목적)" data-en="Article 1 (Purpose)">제1조 (목적)</h2>
-    <p data-ko="이 약관은 HIT Works(이하 '회사')가 제공하는 Heart Rush 서비스(이하 '서비스')의 이용 조건 및 절차, 회사와 이용자의 권리·의무를 규정합니다." data-en="These Terms govern the conditions, procedures, and rights and obligations between HIT Works ('Company') and users regarding the Heart Rush service ('Service').">이 약관은 HIT Works(이하 '회사')가 제공하는 Heart Rush 서비스(이하 '서비스')의 이용 조건 및 절차, 회사와 이용자의 권리·의무를 규정합니다.</p>
-
-    <h2 data-ko="제2조 (서비스의 내용)" data-en="Article 2 (Service Description)">제2조 (서비스의 내용)</h2>
-    <p data-ko="서비스는 캐주얼 색상 매칭 게임으로, 다음 기능을 포함합니다:" data-en="The Service is a casual color matching game that includes:">서비스는 캐주얼 색상 매칭 게임으로, 다음 기능을 포함합니다:</p>
-    <ul>
-      <li data-ko="게임 플레이 및 점수 기록" data-en="Gameplay and score recording">게임 플레이 및 점수 기록</li>
-      <li data-ko="랭킹 시스템" data-en="Ranking system">랭킹 시스템</li>
-      <li data-ko="인앱 재화 (하트) 및 아이템" data-en="In-app currency (hearts) and items">인앱 재화 (하트) 및 아이템</li>
-      <li data-ko="상점, 출석 보상, 일일 퀘스트" data-en="Shop, daily check-in rewards, daily quests">상점, 출석 보상, 일일 퀘스트</li>
-    </ul>
-
-    <h2 data-ko="제3조 (이용자의 의무)" data-en="Article 3 (User Obligations)">제3조 (이용자의 의무)</h2>
-    <ul>
-      <li data-ko="타인의 개인정보를 도용하지 않습니다" data-en="Do not misuse others' personal information">타인의 개인정보를 도용하지 않습니다</li>
-      <li data-ko="서비스를 부정한 방법으로 이용하지 않습니다" data-en="Do not use the service through fraudulent means">서비스를 부정한 방법으로 이용하지 않습니다</li>
-      <li data-ko="확성기 기능을 통해 욕설, 혐오 표현, 광고 등을 전송하지 않습니다" data-en="Do not send profanity, hate speech, or advertisements through the megaphone feature">확성기 기능을 통해 욕설, 혐오 표현, 광고 등을 전송하지 않습니다</li>
-    </ul>
-
-    <h2 data-ko="제4조 (서비스 중단)" data-en="Article 4 (Service Interruption)">제4조 (서비스 중단)</h2>
-    <p data-ko="회사는 천재지변, 시스템 점검 등 불가피한 사유로 서비스를 일시적으로 중단할 수 있습니다." data-en="The Company may temporarily suspend the Service due to force majeure, system maintenance, or other unavoidable circumstances.">회사는 천재지변, 시스템 점검 등 불가피한 사유로 서비스를 일시적으로 중단할 수 있습니다.</p>
-
-    <h2 data-ko="제5조 (인앱 재화)" data-en="Article 5 (In-App Currency)">제5조 (인앱 재화)</h2>
-    <p data-ko="서비스 내 재화(하트)는 게임 내에서만 사용 가능하며, 현금으로 환불되지 않습니다. 유료 구매한 재화의 환불은 관련 법령 및 플랫폼 정책에 따릅니다." data-en="In-app currency (hearts) can only be used within the game and cannot be refunded as cash. Refunds for purchased currency are subject to applicable laws and platform policies.">서비스 내 재화(하트)는 게임 내에서만 사용 가능하며, 현금으로 환불되지 않습니다.</p>
-
-    <h2 data-ko="제6조 (면책)" data-en="Article 6 (Disclaimer)">제6조 (면책)</h2>
-    <p data-ko="회사는 무료로 제공되는 서비스에 대해 관련 법령에 특별한 규정이 없는 한 책임을 지지 않습니다." data-en="The Company is not liable for free services provided unless specifically required by applicable laws.">회사는 무료로 제공되는 서비스에 대해 관련 법령에 특별한 규정이 없는 한 책임을 지지 않습니다.</p>
-
-    <h2 data-ko="제7조 (분쟁 해결)" data-en="Article 7 (Dispute Resolution)">제7조 (분쟁 해결)</h2>
-    <p data-ko="본 약관에 관한 분쟁은 대한민국 법률을 준거법으로 하며, 회사 소재지 관할 법원을 전속 관할로 합니다." data-en="Disputes regarding these Terms shall be governed by the laws of the Republic of Korea, and the court having jurisdiction over the Company's location shall have exclusive jurisdiction.">본 약관에 관한 분쟁은 대한민국 법률을 준거법으로 하며, 회사 소재지 관할 법원을 전속 관할로 합니다.</p>
-  </div>
-
-  <!-- ═══ Knock Knock 개인정보 처리방침 ═══ -->
-  <div id="privacy-knockknock" class="legal-content">
-    <div class="back-btn" onclick="showPage('home')">❮ <span data-ko="돌아가기" data-en="Back">돌아가기</span></div>
+  <!-- ═══ Knock Knock ═══ -->
+  <div id="knockknock" class="page">
+    <div class="back-link" onclick="go('home')">❮ <span data-ko="돌아가기" data-en="Back">돌아가기</span></div>
     <h1 data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</h1>
-    <div class="subtitle">Knock Knock · <span data-ko="최종 수정" data-en="Last updated">최종 수정</span>: 2026-04-14</div>
+    <div class="meta">Knock Knock · <span data-ko="시행일" data-en="Effective">시행일</span> 2026.04.14</div>
 
-    <h2 data-ko="1. 수집하는 개인정보" data-en="1. Information We Collect">1. 수집하는 개인정보</h2>
+    <p data-ko="HIT Works(이하 '회사')는 Knock Knock(이하 '서비스') 이용자의 개인정보를 소중히 보호합니다." data-en="HIT Works ('Company') values and protects the personal information of Knock Knock ('Service') users.">HIT Works(이하 '회사')는 Knock Knock(이하 '서비스') 이용자의 개인정보를 소중히 보호합니다.</p>
+
+    <h2 data-ko="1. 수집하는 정보" data-en="1. Information We Collect">1. 수집하는 정보</h2>
     <ul>
-      <li data-ko="이메일 주소 (계정 인증)" data-en="Email address (account verification)">이메일 주소 (계정 인증)</li>
-      <li data-ko="닉네임 및 프로필 정보" data-en="Nickname and profile information">닉네임 및 프로필 정보</li>
-      <li data-ko="메시지 내용 (암호화 전송)" data-en="Message content (encrypted transmission)">메시지 내용 (암호화 전송)</li>
-      <li data-ko="기기 정보 (푸시 알림용)" data-en="Device information (for push notifications)">기기 정보 (푸시 알림용)</li>
+      <li data-ko="이메일 주소 — 계정 인증" data-en="Email address — account verification">이메일 주소 — 계정 인증</li>
+      <li data-ko="닉네임 및 프로필 — 서비스 내 표시" data-en="Nickname and profile — in-service display">닉네임 및 프로필 — 서비스 내 표시</li>
+      <li data-ko="메시지 내용 — 종단간 암호화 전송" data-en="Message content — end-to-end encrypted">메시지 내용 — 종단간 암호화 전송</li>
+      <li data-ko="기기 정보 — 푸시 알림" data-en="Device information — push notifications">기기 정보 — 푸시 알림</li>
     </ul>
 
-    <h2 data-ko="2. 개인정보의 이용 목적" data-en="2. Purpose of Use">2. 개인정보의 이용 목적</h2>
+    <h2 data-ko="2. 이용 목적" data-en="2. Purpose of Use">2. 이용 목적</h2>
     <ul>
-      <li data-ko="메시지 서비스 제공" data-en="Providing messaging service">메시지 서비스 제공</li>
+      <li data-ko="메시지 전달 서비스 제공" data-en="Providing message delivery service">메시지 전달 서비스 제공</li>
       <li data-ko="계정 관리 및 인증" data-en="Account management and verification">계정 관리 및 인증</li>
       <li data-ko="푸시 알림 발송" data-en="Sending push notifications">푸시 알림 발송</li>
-      <li data-ko="서비스 개선" data-en="Service improvement">서비스 개선</li>
     </ul>
 
-    <h2 data-ko="3. 개인정보의 보유 기간" data-en="3. Retention Period">3. 개인정보의 보유 기간</h2>
-    <p data-ko="회원 탈퇴 시 즉시 파기합니다. 메시지는 수신자 확인 후 서버에서 삭제됩니다." data-en="Information is destroyed immediately upon account deletion. Messages are deleted from the server after recipient confirmation.">회원 탈퇴 시 즉시 파기합니다. 메시지는 수신자 확인 후 서버에서 삭제됩니다.</p>
+    <h2 data-ko="3. 보유 기간" data-en="3. Retention Period">3. 보유 기간</h2>
+    <p data-ko="계정 삭제 시 즉시 파기합니다. 메시지는 수신 확인 후 서버에서 삭제됩니다." data-en="Destroyed immediately upon account deletion. Messages are deleted from the server after read confirmation.">계정 삭제 시 즉시 파기합니다. 메시지는 수신 확인 후 서버에서 삭제됩니다.</p>
 
-    <h2 data-ko="4. 개인정보의 제3자 제공" data-en="4. Third-Party Sharing">4. 개인정보의 제3자 제공</h2>
-    <p data-ko="사용자 동의 없이 제3자에게 개인정보를 제공하지 않습니다." data-en="We do not share personal information with third parties without user consent.">사용자 동의 없이 제3자에게 개인정보를 제공하지 않습니다.</p>
+    <h2 data-ko="4. 제3자 제공" data-en="4. Third-Party Sharing">4. 제3자 제공</h2>
+    <p data-ko="사용자 동의 없이 제3자에게 제공하지 않습니다." data-en="Not shared with third parties without user consent.">사용자 동의 없이 제3자에게 제공하지 않습니다.</p>
 
-    <h2 data-ko="5. 개인정보 보호책임자" data-en="5. Contact">5. 개인정보 보호책임자</h2>
-    <p data-ko="이메일: support@hitworks.co" data-en="Email: support@hitworks.co">이메일: support@hitworks.co</p>
-  </div>
-
-  <!-- ═══ Knock Knock 이용약관 ═══ -->
-  <div id="terms-knockknock" class="legal-content">
-    <div class="back-btn" onclick="showPage('home')">❮ <span data-ko="돌아가기" data-en="Back">돌아가기</span></div>
-    <h1 data-ko="이용약관" data-en="Terms of Service">이용약관</h1>
-    <div class="subtitle">Knock Knock · <span data-ko="최종 수정" data-en="Last updated">최종 수정</span>: 2026-04-14</div>
-
-    <h2 data-ko="제1조 (목적)" data-en="Article 1 (Purpose)">제1조 (목적)</h2>
-    <p data-ko="이 약관은 HIT Works(이하 '회사')가 제공하는 Knock Knock 서비스(이하 '서비스')의 이용 조건을 규정합니다." data-en="These Terms govern the conditions for using the Knock Knock service ('Service') provided by HIT Works ('Company').">이 약관은 HIT Works(이하 '회사')가 제공하는 Knock Knock 서비스(이하 '서비스')의 이용 조건을 규정합니다.</p>
-
-    <h2 data-ko="제2조 (서비스의 내용)" data-en="Article 2 (Service Description)">제2조 (서비스의 내용)</h2>
-    <ul>
-      <li data-ko="감사 메시지 작성 및 전달" data-en="Creating and delivering gratitude messages">감사 메시지 작성 및 전달</li>
-      <li data-ko="건강 데이터 조회 (연동 시)" data-en="Health data viewing (when connected)">건강 데이터 조회 (연동 시)</li>
-      <li data-ko="AI 대화 기능" data-en="AI conversation feature">AI 대화 기능</li>
-    </ul>
-
-    <h2 data-ko="제3조 (이용자의 의무)" data-en="Article 3 (User Obligations)">제3조 (이용자의 의무)</h2>
-    <ul>
-      <li data-ko="타인을 비방하거나 불쾌감을 주는 메시지를 보내지 않습니다" data-en="Do not send messages that defame or cause discomfort to others">타인을 비방하거나 불쾌감을 주는 메시지를 보내지 않습니다</li>
-      <li data-ko="서비스를 악용하여 스팸을 발송하지 않습니다" data-en="Do not abuse the service to send spam">서비스를 악용하여 스팸을 발송하지 않습니다</li>
-    </ul>
-
-    <h2 data-ko="제4조 (면책)" data-en="Article 4 (Disclaimer)">제4조 (면책)</h2>
-    <p data-ko="회사는 무료 서비스에 대해 관련 법령에 특별한 규정이 없는 한 책임을 지지 않습니다." data-en="The Company is not liable for free services unless required by applicable laws.">회사는 무료 서비스에 대해 관련 법령에 특별한 규정이 없는 한 책임을 지지 않습니다.</p>
-
-    <h2 data-ko="제5조 (분쟁 해결)" data-en="Article 5 (Dispute Resolution)">제5조 (분쟁 해결)</h2>
-    <p data-ko="본 약관은 대한민국 법률을 준거법으로 합니다." data-en="These Terms are governed by the laws of the Republic of Korea.">본 약관은 대한민국 법률을 준거법으로 합니다.</p>
+    <h2 data-ko="5. 문의" data-en="5. Contact">5. 문의</h2>
+    <div class="highlight">
+      <strong data-ko="개인정보 보호책임자" data-en="Data Protection Officer">개인정보 보호책임자</strong><br/>
+      <span data-ko="이메일" data-en="Email">이메일</span>: support@hitworks.co
+    </div>
   </div>
 
 </div>
 
 <footer>
   <p>&copy; 2026 HIT Works. All rights reserved.</p>
-  <p data-ko="문의: support@hitworks.co" data-en="Contact: support@hitworks.co">문의: support@hitworks.co</p>
 </footer>
 
 <script>
-let currentLang = 'ko';
-let currentPage = 'home';
+let lang = 'ko';
 
-function setLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.trim() === (lang === 'ko' ? '한국어' : 'EN'));
-  });
-  document.querySelectorAll('[data-ko][data-en]').forEach(el => {
-    el.textContent = el.getAttribute('data-' + lang);
-  });
-  document.documentElement.lang = lang;
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.textContent.trim() === (l === 'ko' ? '한국어' : 'EN'))
+  );
+  document.querySelectorAll('[data-ko][data-en]').forEach(el =>
+    el.textContent = el.getAttribute('data-' + l)
+  );
+  document.documentElement.lang = l;
 }
 
-function showPage(id) {
+function go(id) {
   document.getElementById('home').style.display = id === 'home' ? 'block' : 'none';
-  document.querySelectorAll('.legal-content').forEach(el => {
-    el.classList.toggle('active', el.id === id);
-  });
-  currentPage = id;
-  window.scrollTo(0, 0);
-  history.pushState(null, '', id === 'home' ? '/' : '#' + id);
+  document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === id));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  history.pushState(null, '', id === 'home' ? location.pathname : '#' + id);
 }
 
-// URL hash 기반 페이지 복원
-window.addEventListener('load', () => {
-  const hash = location.hash.replace('#', '');
-  if (hash) showPage(hash);
-  // URL 파라미터로 언어 설정
-  const params = new URLSearchParams(location.search);
-  if (params.get('lang') === 'en') setLang('en');
+// 초기화
+addEventListener('load', () => {
+  const h = location.hash.slice(1);
+  if (h) go(h);
+  if (new URLSearchParams(location.search).get('lang') === 'en') setLang('en');
 });
-window.addEventListener('popstate', () => {
-  const hash = location.hash.replace('#', '');
-  showPage(hash || 'home');
-});
+addEventListener('popstate', () => go(location.hash.slice(1) || 'home'));
 </script>
 
 </body>

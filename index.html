@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HIT Works</title>
+  <title>HIT</title>
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f525.svg" type="image/svg+xml" />
   <style>
     :root {
       --bg: #0b0b12;
@@ -93,6 +94,19 @@
     }
     .app-link:hover { background: rgba(222,47,68,0.2); }
 
+    /* ─ Company ─ */
+    .company {
+      margin-top: 48px; padding: 28px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .company h3 { font-size: 16px; font-weight: 800; margin-bottom: 16px; }
+    .company-row {
+      display: flex; gap: 8px; font-size: 14px; color: var(--sub);
+      margin-bottom: 6px;
+    }
+    .company-label { color: var(--dim); min-width: 60px; flex-shrink: 0; }
+
     /* ─ Legal page ─ */
     .page { display: none; padding-bottom: 80px; }
     .page.active { display: block; }
@@ -170,6 +184,22 @@
           <div class="app-links">
             <button class="app-link" onclick="go('knockknock')" data-ko="개인정보 처리방침" data-en="Privacy Policy">개인정보 처리방침</button>
           </div>
+        </div>
+      </div>
+      <!-- 회사 정보 -->
+      <div class="company">
+        <h3 data-ko="회사 정보" data-en="Company Info">회사 정보</h3>
+        <div class="company-row">
+          <span class="company-label" data-ko="상호" data-en="Name">상호</span>
+          <span>HIT Works</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label" data-ko="이메일" data-en="Email">이메일</span>
+          <span>support@hitworks.co</span>
+        </div>
+        <div class="company-row">
+          <span class="company-label" data-ko="사업자" data-en="Reg. No">사업자</span>
+          <span data-ko="000-00-00000" data-en="000-00-00000">000-00-00000</span>
         </div>
       </div>
     </div>

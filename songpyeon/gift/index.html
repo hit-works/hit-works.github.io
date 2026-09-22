@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>친구가 보낸 송편 — 추석 송편 빚기</title>
+  <meta property="og:title" content="마음을 담아 송편을 보내요" />
+  <meta property="og:description" content="즐거운 한가위 보내세요. 링크를 누르면 친구가 보낸 송편을 볼 수 있어요." />
+  <meta property="og:image" content="https://api.hitworks.workers.dev/apps/share/songpyeon/card.jpg?v=1" />
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f391.svg" type="image/svg+xml" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{min-height:100%}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Segoe UI',sans-serif;background:#1B2740;color:#FFF7E6;line-height:1.6;display:grid;place-items:center;padding:32px 20px}
+    .card{max-width:360px;width:100%;text-align:center}
+    .moon{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FBF0C0,#E9D58F 70%,#D9C27A);margin:0 auto 24px;box-shadow:0 0 0 18px rgba(255,255,255,.05),0 0 0 36px rgba(255,255,255,.03)}
+    h1{font-size:22px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px}
+    p{font-size:15px;color:#C9C2B3;margin-bottom:28px}
+    .btn{display:block;width:100%;padding:15px 18px;border-radius:14px;font-size:16px;font-weight:700;text-decoration:none;margin-bottom:10px}
+    .main{background:#F7E6A8;color:#1B2740}
+    .ghost{background:rgba(255,255,255,.08);color:#FFF7E6;border:1px solid rgba(255,255,255,.14)}
+    .small{font-size:12px;color:#8C8677;margin-top:18px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="moon"></div>
+    <h1>친구가 송편을 보냈어요</h1>
+    <p>즐거운 한가위 보내세요.<br>앱에서 친구가 빚은 송편을 볼 수 있어요.</p>
+    <a id="app" class="btn main" href="#">앱에서 열기</a>
+    <a id="play" class="btn ghost" href="https://play.google.com/store/apps/details?id=com.hit.songpyeon">구글 플레이에서 받기</a>
+    <a id="toss" class="btn ghost" href="#">토스 앱에서 열기</a>
+    <div class="small">앱이 깔려 있으면 링크만 눌러도 바로 열려요.</div>
+  </div>
+  <script>
+    // 링크 뒤 물음표 부분(?s=…&m=…)을 그대로 실어서 앱이 같은 카드를 보여 줘요.
+    const q = location.search || ''
+    const ua = navigator.userAgent
+    const app = document.getElementById('app')
+    const toss = document.getElementById('toss')
+    toss.href = 'intoss://hit-songpyeon/gift' + q
+    if (/Android/i.test(ua)) {
+      // 안드로이드: 앱이 있으면 앱, 없으면 플레이로(intent 링크의 fallback).
+      app.href = 'intent://hit-works.github.io/songpyeon/gift/' + q + '#Intent;scheme=https;package=com.hit.songpyeon;S.browser_fallback_url=' + encodeURIComponent('https://play.google.com/store/apps/details?id=com.hit.songpyeon') + ';end'
+    } else {
+      // 아이폰 · PC: 플레이 앱이 없으니 토스로.
+      app.href = toss.href
+      app.textContent = '토스 앱에서 열기'
+      toss.style.display = 'none'
+    }
+  </script>
+</body>
+</html>
